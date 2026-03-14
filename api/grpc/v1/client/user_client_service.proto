@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package github.com.martketplace.vkr.user.pkg.api.grpc.v1.client;
+
+
+option go_package = "github.com/martketplace-vkr/auth/pkg/api/grpc/v1/client;client";
+
+
+
+service UserClientService {
+
+  rpc GetUser(GetUserRequest) returns (User);
+
+  rpc UpdateUser(UpdateUserRequest) returns (User);
+
+  rpc CreateVendor(CreateVendorRequest) returns (Vendor);
+
+  rpc GetVendor(GetVendorRequest) returns (Vendor);
+
+}
+
+message User {
+
+  int64 id = 1;
+  string email = 2;
+  string first_name = 3;
+  string last_name = 4;
+
+}
+
+message Vendor {
+
+  int64 id = 1;
+  int64 user_id = 2;
+  string name = 3;
+  string description = 4;
+
+}
+
+message GetUserRequest {
+  int64 user_id = 1;
+}
+
+message UpdateUserRequest {
+  int64 user_id = 1;
+  string first_name = 2;
+  string last_name = 3;
+}
+
+message CreateVendorRequest {
+  int64 user_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message GetVendorRequest {
+  int64 vendor_id = 1;
+}
