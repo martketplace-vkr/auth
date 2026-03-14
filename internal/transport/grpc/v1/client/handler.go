@@ -65,6 +65,6 @@ func (h *Handler) Logout(ctx context.Context, req *client.LogoutRequest) (resp *
 	}
 
 	return &client.LogoutResponse{
-		Success: resp.Success,
+		Success: true,
 	}, nil
 }
