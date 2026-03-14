@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    uses: martketplace-vkr/ci-templates/.github/workflows/deploy-service.yml@release
+    uses: martketplace-vkr/ci-template/.github/workflows/deploy-service.yml@release
     with:
       service_name: auth
       values_file: ./deploy/values.yaml
