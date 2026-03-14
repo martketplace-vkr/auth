@@ -317,6 +317,190 @@ func (x *ValidateTokenResponse) GetRole() string {
 	return ""
 }
 
+type RefreshTokenRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshTokenRequest) Reset() {
+	*x = RefreshTokenRequest{}
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshTokenRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshTokenRequest) ProtoMessage() {}
+
+func (x *RefreshTokenRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshTokenRequest.ProtoReflect.Descriptor instead.
+func (*RefreshTokenRequest) Descriptor() ([]byte, []int) {
+	return file_v1_client_auth_client_service_proto_rawDescGZIP(), []int{6}
+}
+
+func (x *RefreshTokenRequest) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+type RefreshTokenResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	AccessToken   string                 `protobuf:"bytes,1,opt,name=access_token,json=accessToken,proto3" json:"access_token,omitempty"`
+	RefreshToken  string                 `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RefreshTokenResponse) Reset() {
+	*x = RefreshTokenResponse{}
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[7]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RefreshTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RefreshTokenResponse) ProtoMessage() {}
+
+func (x *RefreshTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[7]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RefreshTokenResponse.ProtoReflect.Descriptor instead.
+func (*RefreshTokenResponse) Descriptor() ([]byte, []int) {
+	return file_v1_client_auth_client_service_proto_rawDescGZIP(), []int{7}
+}
+
+func (x *RefreshTokenResponse) GetAccessToken() string {
+	if x != nil {
+		return x.AccessToken
+	}
+	return ""
+}
+
+func (x *RefreshTokenResponse) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+type LogoutRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RefreshToken  string                 `protobuf:"bytes,1,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LogoutRequest) Reset() {
+	*x = LogoutRequest{}
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[8]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutRequest) ProtoMessage() {}
+
+func (x *LogoutRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[8]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutRequest.ProtoReflect.Descriptor instead.
+func (*LogoutRequest) Descriptor() ([]byte, []int) {
+	return file_v1_client_auth_client_service_proto_rawDescGZIP(), []int{8}
+}
+
+func (x *LogoutRequest) GetRefreshToken() string {
+	if x != nil {
+		return x.RefreshToken
+	}
+	return ""
+}
+
+type LogoutResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *LogoutResponse) Reset() {
+	*x = LogoutResponse{}
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *LogoutResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*LogoutResponse) ProtoMessage() {}
+
+func (x *LogoutResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_client_auth_client_service_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use LogoutResponse.ProtoReflect.Descriptor instead.
+func (*LogoutResponse) Descriptor() ([]byte, []int) {
+	return file_v1_client_auth_client_service_proto_rawDescGZIP(), []int{9}
+}
+
+func (x *LogoutResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_v1_client_auth_client_service_proto protoreflect.FileDescriptor
 
 const file_v1_client_auth_client_service_proto_rawDesc = "" +
@@ -337,11 +521,22 @@ const file_v1_client_auth_client_service_proto_rawDesc = "" +
 	"\x05token\x18\x01 \x01(\tR\x05token\"D\n" +
 	"\x15ValidateTokenResponse\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x12\n" +
-	"\x04role\x18\x02 \x01(\tR\x04role2\xff\x03\n" +
+	"\x04role\x18\x02 \x01(\tR\x04role\":\n" +
+	"\x13RefreshTokenRequest\x12#\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"^\n" +
+	"\x14RefreshTokenResponse\x12!\n" +
+	"\faccess_token\x18\x01 \x01(\tR\vaccessToken\x12#\n" +
+	"\rrefresh_token\x18\x02 \x01(\tR\frefreshToken\"4\n" +
+	"\rLogoutRequest\x12#\n" +
+	"\rrefresh_token\x18\x01 \x01(\tR\frefreshToken\"*\n" +
+	"\x0eLogoutResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess2\xc9\x06\n" +
 	"\x11AuthClientService\x12\x9f\x01\n" +
 	"\bRegister\x12H.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterRequest\x1aI.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterResponse\x12\x96\x01\n" +
 	"\x05Login\x12E.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LoginRequest\x1aF.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LoginResponse\x12\xae\x01\n" +
-	"\rValidateToken\x12M.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenRequest\x1aN.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenResponseB@Z>github.com/martketplace-vkr/auth/pkg/api/grpc/v1/client;clientb\x06proto3"
+	"\rValidateToken\x12M.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenRequest\x1aN.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenResponse\x12\xab\x01\n" +
+	"\fRefreshToken\x12L.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RefreshTokenRequest\x1aM.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RefreshTokenResponse\x12\x99\x01\n" +
+	"\x06Logout\x12F.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LogoutRequest\x1aG.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LogoutResponseB@Z>github.com/martketplace-vkr/auth/pkg/api/grpc/v1/client;clientb\x06proto3"
 
 var (
 	file_v1_client_auth_client_service_proto_rawDescOnce sync.Once
@@ -355,7 +550,7 @@ func file_v1_client_auth_client_service_proto_rawDescGZIP() []byte {
 	return file_v1_client_auth_client_service_proto_rawDescData
 }
 
-var file_v1_client_auth_client_service_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
+var file_v1_client_auth_client_service_proto_msgTypes = make([]protoimpl.MessageInfo, 10)
 var file_v1_client_auth_client_service_proto_goTypes = []any{
 	(*RegisterRequest)(nil),       // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterRequest
 	(*RegisterResponse)(nil),      // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterResponse
@@ -363,16 +558,24 @@ var file_v1_client_auth_client_service_proto_goTypes = []any{
 	(*LoginResponse)(nil),         // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LoginResponse
 	(*ValidateTokenRequest)(nil),  // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenRequest
 	(*ValidateTokenResponse)(nil), // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenResponse
+	(*RefreshTokenRequest)(nil),   // 6: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RefreshTokenRequest
+	(*RefreshTokenResponse)(nil),  // 7: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RefreshTokenResponse
+	(*LogoutRequest)(nil),         // 8: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LogoutRequest
+	(*LogoutResponse)(nil),        // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LogoutResponse
 }
 var file_v1_client_auth_client_service_proto_depIdxs = []int32{
 	0, // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Register:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterRequest
 	2, // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Login:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LoginRequest
 	4, // 2: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.ValidateToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenRequest
-	1, // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Register:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterResponse
-	3, // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Login:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LoginResponse
-	5, // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.ValidateToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenResponse
-	3, // [3:6] is the sub-list for method output_type
-	0, // [0:3] is the sub-list for method input_type
+	6, // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.RefreshToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RefreshTokenRequest
+	8, // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Logout:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LogoutRequest
+	1, // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Register:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RegisterResponse
+	3, // 6: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Login:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LoginResponse
+	5, // 7: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.ValidateToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.ValidateTokenResponse
+	7, // 8: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.RefreshToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.RefreshTokenResponse
+	9, // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.AuthClientService.Logout:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.client.LogoutResponse
+	5, // [5:10] is the sub-list for method output_type
+	0, // [0:5] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -389,7 +592,7 @@ func file_v1_client_auth_client_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_client_auth_client_service_proto_rawDesc), len(file_v1_client_auth_client_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   6,
+			NumMessages:   10,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
