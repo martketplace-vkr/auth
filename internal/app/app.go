@@ -9,15 +9,18 @@ import (
 	"github.com/martketplace-vkr/auth/config"
 	"github.com/martketplace-vkr/auth/internal/app/cmp/server"
 	clientRepository "github.com/martketplace-vkr/auth/internal/repository/pg/client"
+	clientRedis "github.com/martketplace-vkr/auth/internal/repository/redis/client"
 	clientService "github.com/martketplace-vkr/auth/internal/service/client"
 	clientTransport "github.com/martketplace-vkr/auth/internal/transport/grpc/v1/client"
 
 	"github.com/martketplace-vkr/pkg/build"
 	"github.com/martketplace-vkr/pkg/build/components/pgxsqlxcomponent"
+	"github.com/martketplace-vkr/pkg/build/components/rediscomponent"
 )
 
 func Run(ctx context.Context, cfg *config.Config) error {
 	pg := pgxsqlxcomponent.New(cfg.Postgres)
+	rd := rediscomponent.New(cfg.Redis)
 
 	txManager, err := txmanager.New(trmsqlx.NewDefaultFactory(pg.DB))
 	if err != nil {
@@ -25,7 +28,8 @@ func Run(ctx context.Context, cfg *config.Config) error {
 	}
 
 	clientRepo := clientRepository.New(pg.DB, trmsqlx.DefaultCtxGetter)
-	clientServ := clientService.New(txManager, clientRepo)
+	clientCache := clientRedis.New(rd.Client)
+	clientServ := clientService.New(cfg.AuthClientService, txManager, clientRepo, clientCache)
 	clientHandler := clientTransport.New(clientServ)
 
 	grpcServer := server.New(

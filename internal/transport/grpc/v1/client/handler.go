@@ -3,12 +3,13 @@ package client
 import (
 	"context"
 
+	"github.com/martketplace-vkr/auth/internal/service/client/dto"
 	"github.com/martketplace-vkr/auth/pkg/api/grpc/v1/client"
 )
 
 type Handler struct {
 	service service
-	client.UserClientServiceServer
+	client.AuthClientServiceServer
 }
 
 func New(service service) *Handler {
@@ -17,19 +18,19 @@ func New(service service) *Handler {
 	}
 }
 
-func (h *Handler) GetUser(ctx context.Context, request *client.GetUserRequest) (resp *client.User, err error) {
+func (s *Handler) Register(ctx context.Context, req *client.RegisterRequest) (resp *client.RegisterResponse, err error) {
+	response, err := s.service.SignUp(ctx, dto.SignUpRequestFromProto(req))
+	if err != nil {
+		return resp, err
+	}
+
+	return response.ToProto(), nil
+}
+
+func (s *Handler) Login(ctx context.Context, req *client.LoginRequest) (resp *client.LoginResponse, err error) {
 	return resp, nil
 }
 
-func (h *Handler) UpdateUser(ctx context.Context, request *client.UpdateUserRequest) (resp *client.User, err error) {
+func (s *Handler) ValidateToken(ctx context.Context, req *client.ValidateTokenRequest) (resp *client.ValidateTokenResponse, err error) {
 	return resp, nil
-}
-
-func (h *Handler) CreateVendor(ctx context.Context, request *client.CreateVendorRequest) (resp *client.Vendor, err error) {
-	return resp, nil
-}
-
-func (h *Handler) GetVendor(ctx context.Context, request *client.GetVendorRequest) (resp *client.Vendor, err error) {
-	return resp, nil
-
 }

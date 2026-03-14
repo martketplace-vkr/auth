@@ -19,12 +19,12 @@ const (
 type Server struct {
 	cfg        grpcServer.Config
 	grpcServer *grpc.Server
-	client     client.UserClientServiceServer
+	client     client.AuthClientServiceServer
 }
 
 func New(
 	cfg grpcServer.Config,
-	client client.UserClientServiceServer,
+	client client.AuthClientServiceServer,
 ) *Server {
 	return &Server{
 		cfg:    cfg,
@@ -45,7 +45,7 @@ func (s *Server) Start(ctx context.Context) (err error) {
 	s.grpcServer = server.Grpc
 	reflection.Register(s.grpcServer)
 
-	client.RegisterUserClientServiceServer(s.grpcServer, s.client)
+	client.RegisterAuthClientServiceServer(s.grpcServer, s.client)
 
 	listener, err := net.Listen("tcp", s.cfg.Host)
 	if err != nil {
