@@ -1,0 +1,14 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - release
+
+jobs:
+  deploy:
+    uses: martketplace-vkr/ci-templates/.github/workflows/deploy-service.yml@release
+    with:
+      service_name: auth
+      values_file: ./deploy/values.yaml
+      namespace: martketplace-vkr
