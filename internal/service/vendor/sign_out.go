@@ -1,14 +1,14 @@
-package client
+package vendor
 
 import (
 	"context"
 	"crypto/sha256"
 	"encoding/base64"
 
-	"github.com/martketplace-vkr/auth/internal/service/client/dto"
+	vendordto "github.com/martketplace-vkr/auth/internal/service/vendor_dto"
 )
 
-func (s *service) SignOut(ctx context.Context, req dto.SignOutRequest) (err error) {
+func (s *service) SignOut(ctx context.Context, req vendordto.SignOutRequest) (err error) {
 	hashBytes := sha256.Sum256([]byte(req.RefreshToken))
 	refreshTokenHash := base64.URLEncoding.EncodeToString(hashBytes[:])
 

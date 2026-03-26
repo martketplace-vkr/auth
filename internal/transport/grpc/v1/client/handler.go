@@ -44,6 +44,7 @@ func (h *Handler) ValidateToken(ctx context.Context, req *client.ValidateTokenRe
 
 	return &client.ValidateTokenResponse{
 		UserId: userID,
+		Role:   "client",
 	}, nil
 }
 

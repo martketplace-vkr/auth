@@ -1,4 +1,4 @@
-drop table if not exists auth.sessions
-drop table if not exists auth."user"
+drop table if not exists auth.sessions;
+drop table if not exists auth."user";
 drop schema if not exists auth;
 

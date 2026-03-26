@@ -1,4 +1,4 @@
-package client
+package vendor
 
 import (
 	"context"
@@ -22,12 +22,12 @@ func New(db *sqlx.DB, ctxGetter *trmsqlx.CtxGetter) *repository {
 
 func (r *repository) InsertUser(ctx context.Context, user *domain.User) error {
 	query := `
-		insert into auth."user"(
+		insert into vendor.vendor(
 			email,
 			password_hash
 		) values (
 			$1,
-			$2 
+			$2
 		) returning *
 	`
 
@@ -47,7 +47,7 @@ func (r *repository) InsertUser(ctx context.Context, user *domain.User) error {
 
 func (r *repository) SelectUserByEmail(ctx context.Context, email string) (user *domain.User, err error) {
 	query := `
-		select 
+		select
 			id,
 			email,
 			password_hash,
@@ -55,7 +55,7 @@ func (r *repository) SelectUserByEmail(ctx context.Context, email string) (user 
 			status,
 			created_at,
 			updated_at
-		from auth."user"
+		from vendor.vendor
 		where email = $1
 	`
 

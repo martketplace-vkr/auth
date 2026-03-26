@@ -1,11 +1,11 @@
-package client
+package admin
 
 import (
 	"context"
 	"crypto/sha256"
 	"encoding/base64"
 
-	"github.com/martketplace-vkr/auth/internal/service/client/dto"
+	"github.com/martketplace-vkr/auth/internal/service/admin/dto"
 )
 
 func (s *service) SignOut(ctx context.Context, req dto.SignOutRequest) (err error) {

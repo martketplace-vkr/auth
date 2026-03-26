@@ -8,7 +8,9 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 
+	"github.com/martketplace-vkr/auth/pkg/api/grpc/v1/admin"
 	"github.com/martketplace-vkr/auth/pkg/api/grpc/v1/client"
+	"github.com/martketplace-vkr/auth/pkg/api/grpc/v1/vendor"
 	grpcServer "github.com/martketplace-vkr/pkg/server/grpc"
 )
 
@@ -19,16 +21,22 @@ const (
 type Server struct {
 	cfg        grpcServer.Config
 	grpcServer *grpc.Server
+	admin      admin.AuthAdminServiceServer
 	client     client.AuthClientServiceServer
+	vendor     vendor.AuthVendorServiceServer
 }
 
 func New(
 	cfg grpcServer.Config,
+	admin admin.AuthAdminServiceServer,
 	client client.AuthClientServiceServer,
+	vendor vendor.AuthVendorServiceServer,
 ) *Server {
 	return &Server{
 		cfg:    cfg,
+		admin:  admin,
 		client: client,
+		vendor: vendor,
 	}
 }
 
@@ -45,7 +53,9 @@ func (s *Server) Start(ctx context.Context) (err error) {
 	s.grpcServer = server.Grpc
 	reflection.Register(s.grpcServer)
 
+	admin.RegisterAuthAdminServiceServer(s.grpcServer, s.admin)
 	client.RegisterAuthClientServiceServer(s.grpcServer, s.client)
+	vendor.RegisterAuthVendorServiceServer(s.grpcServer, s.vendor)
 
 	listener, err := net.Listen("tcp", s.cfg.Host)
 	if err != nil {
