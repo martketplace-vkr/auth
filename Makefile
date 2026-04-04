@@ -2,3 +2,5 @@
 
 proto:
 	cd api/grpc && buf generate
+
+
