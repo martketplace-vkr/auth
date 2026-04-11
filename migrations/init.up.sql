@@ -53,5 +53,5 @@ create table if not exists employee.invite_token(
 create table if not exists employee.user_role(
     id bigserial primary key,
     employee_id integer not null references employee."user"(id),
-    role_id intger not null references employee.role(id)
+    role_id integer not null references employee.role(id)
 );
