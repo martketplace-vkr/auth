@@ -21,5 +21,10 @@ func (s *service) SignUp(ctx context.Context, req dto.SignUpRequest) (resp dto.S
 
 	resp.UserId = user.ID
 
+	err = s.outbox.SendUserRegister(ctx, *user)
+	if err != nil {
+		return resp, err
+	}
+
 	return resp, nil
 }
