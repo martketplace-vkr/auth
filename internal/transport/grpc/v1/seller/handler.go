@@ -1,9 +1,9 @@
-package vendor
+package seller
 
 import (
 	"context"
 
-	vendordto "github.com/martketplace-vkr/auth/internal/service/vendor_dto"
+	"github.com/martketplace-vkr/auth/internal/service/seller/dto"
 	vendorpb "github.com/martketplace-vkr/auth/pkg/api/grpc/v1/vendor"
 )
 
@@ -19,7 +19,7 @@ func New(service service) *Handler {
 }
 
 func (h *Handler) Register(ctx context.Context, req *vendorpb.RegisterRequest) (resp *vendorpb.RegisterResponse, err error) {
-	response, err := h.service.SignUp(ctx, vendordto.SignUpRequestFromProto(req))
+	response, err := h.service.SignUp(ctx, dto.SignUpRequestFromProto(req))
 	if err != nil {
 		return resp, err
 	}
@@ -28,7 +28,7 @@ func (h *Handler) Register(ctx context.Context, req *vendorpb.RegisterRequest) (
 }
 
 func (h *Handler) Login(ctx context.Context, req *vendorpb.LoginRequest) (resp *vendorpb.LoginResponse, err error) {
-	response, err := h.service.SignIn(ctx, vendordto.SignInRequestFromProto(req))
+	response, err := h.service.SignIn(ctx, dto.SignInRequestFromProto(req))
 	if err != nil {
 		return resp, err
 	}
@@ -58,7 +58,7 @@ func (h *Handler) RefreshToken(ctx context.Context, req *vendorpb.RefreshTokenRe
 }
 
 func (h *Handler) Logout(ctx context.Context, req *vendorpb.LogoutRequest) (resp *vendorpb.LogoutResponse, err error) {
-	err = h.service.SignOut(ctx, vendordto.SignOutRequest{
+	err = h.service.SignOut(ctx, dto.SignOutRequest{
 		RefreshToken: req.RefreshToken,
 	})
 	if err != nil {

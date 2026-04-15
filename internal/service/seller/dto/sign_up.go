@@ -1,4 +1,4 @@
-package vendordto
+package dto
 
 import (
 	"github.com/martketplace-vkr/auth/domain"

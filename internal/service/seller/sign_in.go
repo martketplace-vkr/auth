@@ -1,13 +1,13 @@
-package vendor
+package seller
 
 import (
 	"context"
 
 	clientdto "github.com/martketplace-vkr/auth/internal/service/client/dto"
-	vendordto "github.com/martketplace-vkr/auth/internal/service/vendor_dto"
+	"github.com/martketplace-vkr/auth/internal/service/seller/dto"
 )
 
-func (s *service) SignIn(ctx context.Context, req vendordto.SignInRequest) (resp vendordto.SignInResponse, err error) {
+func (s *service) SignIn(ctx context.Context, req dto.SignInRequest) (resp dto.SignInResponse, err error) {
 	user, err := s.repository.SelectUserByEmail(ctx, req.Email)
 	if err != nil {
 		return resp, err

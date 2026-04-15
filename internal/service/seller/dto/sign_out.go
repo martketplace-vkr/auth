@@ -1,4 +1,4 @@
-package vendordto
+package dto
 
 type (
 	SignOutRequest struct {

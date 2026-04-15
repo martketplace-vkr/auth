@@ -1,4 +1,4 @@
-package vendor
+package seller
 
 type service struct {
 	cfg        Config

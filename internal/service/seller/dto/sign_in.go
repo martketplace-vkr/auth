@@ -1,4 +1,4 @@
-package vendordto
+package dto
 
 import vendorpb "github.com/martketplace-vkr/auth/pkg/api/grpc/v1/vendor"
 

@@ -1,4 +1,4 @@
-package vendor
+package seller
 
 import (
 	"context"
@@ -6,13 +6,13 @@ import (
 	"encoding/base64"
 
 	clientdto "github.com/martketplace-vkr/auth/internal/service/client/dto"
-	vendordto "github.com/martketplace-vkr/auth/internal/service/vendor_dto"
+	dto "github.com/martketplace-vkr/auth/internal/service/seller/dto"
 )
 
 func (s *service) Refresh(
 	ctx context.Context,
 	refreshToken string,
-) (resp vendordto.RefreshResponse, err error) {
+) (resp dto.RefreshResponse, err error) {
 	hashBytes := sha256.Sum256([]byte(refreshToken))
 	hash := base64.URLEncoding.EncodeToString(hashBytes[:])
 
