@@ -59,7 +59,7 @@ func Run(ctx context.Context, cfg *config.Config) error {
 		JwtSecret: cfg.AuthClientService.JwtSecret,
 	}
 
-	clientServ := clientService.New(cfg.AuthClientService, txManager, clientRepo, clientCache, outboxCl)
+	clientServ := clientService.New(cfg.AuthClientService, txManager, clientRepo, clientCache, outboxCmp)
 	adminServ := adminService.New(
 		adminService.Config(authCfg),
 		txManager,

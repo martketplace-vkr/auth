@@ -26,4 +26,7 @@ type (
 			tokenHash string,
 		) error
 	}
+	outbox interface{
+		SendUserRegister(ctx context.Context, user domain.User) (err error)
+	}
 )

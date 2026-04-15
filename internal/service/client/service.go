@@ -1,13 +1,11 @@
 package client
 
-import "github.com/martketplace-vkr/pkg/outbox"
-
 type service struct {
 	cfg        Config
 	txManager  txManager
 	repository repository
 	cache      cache
-	outbox     outbox.Outbox
+	outbox     outbox
 }
 
 func New(
@@ -15,7 +13,7 @@ func New(
 	txManager txManager,
 	repository repository,
 	cache cache,
-	outbox outbox.Outbox,
+	outbox outbox,
 ) *service {
 	return &service{
 		cfg:        cfg,
