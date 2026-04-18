@@ -37,7 +37,7 @@ func (h *Handler) Login(ctx context.Context, req *adminpb.LoginRequest) (resp *a
 }
 
 func (h *Handler) ValidateToken(ctx context.Context, req *adminpb.ValidateTokenRequest) (resp *adminpb.ValidateTokenResponse, err error) {
-	userID, err := h.service.ValidateToken(ctx, req.Token)
+	userID, login, err := h.service.ValidateToken(ctx, req.Token)
 	if err != nil {
 		return resp, err
 	}
@@ -45,6 +45,7 @@ func (h *Handler) ValidateToken(ctx context.Context, req *adminpb.ValidateTokenR
 	return &adminpb.ValidateTokenResponse{
 		UserId: userID,
 		Role:   "admin",
+		Login:  login,
 	}, nil
 }
 

@@ -14,6 +14,7 @@ type (
 	repository interface {
 		InsertUser(ctx context.Context, user *domain.User) error
 		SelectUserByEmail(ctx context.Context, email string) (user *domain.User, err error)
+		SelectUserByID(ctx context.Context, id int64) (user *domain.User, err error)
 	}
 	cache interface {
 		SaveRefreshToken(ctx context.Context, args dto.SaveRefreshTokenArgs) (err error)
@@ -26,7 +27,7 @@ type (
 			tokenHash string,
 		) error
 	}
-	outbox interface{
+	outbox interface {
 		SendUserRegister(ctx context.Context, user domain.User) (err error)
 	}
 )

@@ -9,17 +9,18 @@ import (
 func (s *service) ValidateToken(
 	ctx context.Context,
 	accessToken string,
-) (int64, error) {
+) (int64, string, error) {
 	token, err := jwt.Parse(accessToken, func(token *jwt.Token) (interface{}, error) {
 		return []byte(s.cfg.JwtSecret), nil
 	})
 	if err != nil {
-		return 0, err
+		return 0, "", err
 	}
 
 	claims := token.Claims.(jwt.MapClaims)
 
 	userID := int64(claims["user_id"].(float64))
+	login, _ := claims["login"].(string)
 
-	return userID, nil
+	return userID, login, nil
 }

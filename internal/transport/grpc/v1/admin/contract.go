@@ -14,7 +14,7 @@ type (
 		ValidateToken(
 			ctx context.Context,
 			accessToken string,
-		) (int64, error)
+		) (int64, string, error)
 		Refresh(
 			ctx context.Context,
 			refreshToken string,

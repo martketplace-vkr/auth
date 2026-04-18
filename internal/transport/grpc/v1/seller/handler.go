@@ -37,7 +37,7 @@ func (h *Handler) Login(ctx context.Context, req *vendorpb.LoginRequest) (resp *
 }
 
 func (h *Handler) ValidateToken(ctx context.Context, req *vendorpb.ValidateTokenRequest) (resp *vendorpb.ValidateTokenResponse, err error) {
-	vendorID, err := h.service.ValidateToken(ctx, req.Token)
+	vendorID, login, err := h.service.ValidateToken(ctx, req.Token)
 	if err != nil {
 		return resp, err
 	}
@@ -45,6 +45,7 @@ func (h *Handler) ValidateToken(ctx context.Context, req *vendorpb.ValidateToken
 	return &vendorpb.ValidateTokenResponse{
 		VendorId: vendorID,
 		Role:     "vendor",
+		Login:    login,
 	}, nil
 }
 

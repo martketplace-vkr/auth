@@ -3,8 +3,8 @@ package admin
 import (
 	"context"
 
-	clientdto "github.com/martketplace-vkr/auth/internal/service/client/dto"
 	"github.com/martketplace-vkr/auth/internal/service/admin/dto"
+	clientdto "github.com/martketplace-vkr/auth/internal/service/client/dto"
 )
 
 func (s *service) SignIn(ctx context.Context, req dto.SignInRequest) (resp dto.SignInResponse, err error) {
@@ -18,7 +18,7 @@ func (s *service) SignIn(ctx context.Context, req dto.SignInRequest) (resp dto.S
 		return resp, err
 	}
 
-	resp.AccessToken, err = s.generateAccessToken(user.ID)
+	resp.AccessToken, err = s.generateAccessToken(user.ID, user.Email)
 	if err != nil {
 		return resp, err
 	}

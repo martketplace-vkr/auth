@@ -77,6 +77,35 @@ func (r *repository) SelectUserByEmail(ctx context.Context, email string) (user 
 	return user, nil
 }
 
+func (r *repository) SelectUserByID(ctx context.Context, id int64) (user *domain.User, err error) {
+	query := `
+		select
+			id,
+			email,
+			password_hash,
+			email_verified,
+			status,
+			created_at,
+			updated_at
+		from employee."user"
+		where id = $1
+	`
+
+	user = new(domain.User)
+
+	err = r.ctxGetter.DefaultTrOrDB(ctx, r.db).GetContext(
+		ctx,
+		user,
+		query,
+		id,
+	)
+	if err != nil {
+		return user, err
+	}
+
+	return user, nil
+}
+
 func (r *repository) HasActiveInviteToken(ctx context.Context, token string) (exists bool, err error) {
 	query := `
 		select exists(

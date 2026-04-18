@@ -18,7 +18,7 @@ func (s *service) SignIn(ctx context.Context, req dto.SignInRequest) (resp dto.S
 		return resp, err
 	}
 
-	resp.AccessToken, err = s.generateAccessToken(user.ID)
+	resp.AccessToken, err = s.generateAccessToken(user.ID, user.Email)
 	if err != nil {
 		return resp, err
 	}

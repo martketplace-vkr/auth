@@ -38,6 +38,7 @@ message ValidateTokenRequest {
 message ValidateTokenResponse {
   int64 vendor_id = 1;
   string role = 2;
+  string login = 3;
 }
 
 message RefreshTokenRequest {

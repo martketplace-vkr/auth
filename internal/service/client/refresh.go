@@ -21,7 +21,12 @@ func (s *service) Refresh(
 		return resp, err
 	}
 
-	resp.AccessToken, err = s.generateAccessToken(userID)
+	user, err := s.repository.SelectUserByID(ctx, userID)
+	if err != nil {
+		return resp, err
+	}
+
+	resp.AccessToken, err = s.generateAccessToken(user.ID, user.Email)
 	if err != nil {
 		return resp, err
 	}

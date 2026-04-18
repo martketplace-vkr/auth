@@ -47,7 +47,7 @@ func (r *repository) InsertUser(ctx context.Context, user *domain.User) error {
 
 func (r *repository) SelectUserByEmail(ctx context.Context, email string) (user *domain.User, err error) {
 	query := `
-		select 
+		select
 			id,
 			email,
 			password_hash,
@@ -66,6 +66,35 @@ func (r *repository) SelectUserByEmail(ctx context.Context, email string) (user 
 		user,
 		query,
 		email,
+	)
+	if err != nil {
+		return user, err
+	}
+
+	return user, nil
+}
+
+func (r *repository) SelectUserByID(ctx context.Context, id int64) (user *domain.User, err error) {
+	query := `
+		select
+			id,
+			email,
+			password_hash,
+			email_verified,
+			status,
+			created_at,
+			updated_at
+		from auth."user"
+		where id = $1
+	`
+
+	user = new(domain.User)
+
+	err = r.ctxGetter.DefaultTrOrDB(ctx, r.db).GetContext(
+		ctx,
+		user,
+		query,
+		id,
 	)
 	if err != nil {
 		return user, err

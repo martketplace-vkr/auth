@@ -14,6 +14,7 @@ type (
 	repository interface {
 		InsertUser(ctx context.Context, user *domain.User) error
 		SelectUserByEmail(ctx context.Context, email string) (user *domain.User, err error)
+		SelectUserByID(ctx context.Context, id int64) (user *domain.User, err error)
 		HasActiveInviteToken(ctx context.Context, token string) (bool, error)
 		UseInviteToken(ctx context.Context, token string, userID int64) error
 		CreateInviteToken(ctx context.Context, createdBy int64, roleID int64, token string) error
