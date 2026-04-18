@@ -15,6 +15,7 @@ func (s *service) generateAccessToken(userID int64, login string) (string, error
 	claims := jwt.MapClaims{
 		"user_id": userID,
 		"login":   login,
+		"role":    "client",
 		"exp":     time.Now().Add(time.Minute * 15).Unix(),
 	}
 

@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"github.com/golang-jwt/jwt/v5"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func (s *service) ValidateToken(
@@ -18,6 +20,10 @@ func (s *service) ValidateToken(
 	}
 
 	claims := token.Claims.(jwt.MapClaims)
+	role, _ := claims["role"].(string)
+	if role != "" && role != "client" {
+		return 0, "", status.Error(codes.Unauthenticated, "invalid token role")
+	}
 
 	userID := int64(claims["user_id"].(float64))
 	login, _ := claims["login"].(string)
