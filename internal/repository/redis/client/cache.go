@@ -20,8 +20,13 @@ type cache struct {
 }
 
 func New(rd *redis.Client) *cache {
+	cfg := Config{
+		RerfreshTokenTtlSeconds: 60 * 60 * 24 * 30,
+	}
+
 	return &cache{
-		rd: rd,
+		cfg: cfg,
+		rd:  rd,
 	}
 }
 
