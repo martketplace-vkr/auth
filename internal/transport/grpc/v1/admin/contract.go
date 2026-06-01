@@ -3,6 +3,7 @@ package admin
 import (
 	"context"
 
+	"github.com/martketplace-vkr/auth/domain"
 	"github.com/martketplace-vkr/auth/internal/service/admin/dto"
 )
 
@@ -23,5 +24,6 @@ type (
 			ctx context.Context,
 			req dto.CreateInviteTokenRequest,
 		) (resp dto.CreateInviteTokenResponse, err error)
+		ListVendors(ctx context.Context) ([]domain.User, error)
 	}
 )

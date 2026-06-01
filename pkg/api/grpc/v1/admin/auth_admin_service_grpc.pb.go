@@ -25,6 +25,7 @@ const (
 	AuthAdminService_RefreshToken_FullMethodName      = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/RefreshToken"
 	AuthAdminService_Logout_FullMethodName            = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Logout"
 	AuthAdminService_CreateInviteToken_FullMethodName = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/CreateInviteToken"
+	AuthAdminService_ListVendors_FullMethodName       = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/ListVendors"
 )
 
 // AuthAdminServiceClient is the client API for AuthAdminService service.
@@ -37,6 +38,7 @@ type AuthAdminServiceClient interface {
 	RefreshToken(ctx context.Context, in *RefreshTokenRequest, opts ...grpc.CallOption) (*RefreshTokenResponse, error)
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	CreateInviteToken(ctx context.Context, in *CreateInviteTokenRequest, opts ...grpc.CallOption) (*CreateInviteTokenResponse, error)
+	ListVendors(ctx context.Context, in *ListVendorsRequest, opts ...grpc.CallOption) (*ListVendorsResponse, error)
 }
 
 type authAdminServiceClient struct {
@@ -107,6 +109,16 @@ func (c *authAdminServiceClient) CreateInviteToken(ctx context.Context, in *Crea
 	return out, nil
 }
 
+func (c *authAdminServiceClient) ListVendors(ctx context.Context, in *ListVendorsRequest, opts ...grpc.CallOption) (*ListVendorsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListVendorsResponse)
+	err := c.cc.Invoke(ctx, AuthAdminService_ListVendors_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthAdminServiceServer is the server API for AuthAdminService service.
 // All implementations must embed UnimplementedAuthAdminServiceServer
 // for forward compatibility.
@@ -117,6 +129,7 @@ type AuthAdminServiceServer interface {
 	RefreshToken(context.Context, *RefreshTokenRequest) (*RefreshTokenResponse, error)
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	CreateInviteToken(context.Context, *CreateInviteTokenRequest) (*CreateInviteTokenResponse, error)
+	ListVendors(context.Context, *ListVendorsRequest) (*ListVendorsResponse, error)
 	mustEmbedUnimplementedAuthAdminServiceServer()
 }
 
@@ -144,6 +157,9 @@ func (UnimplementedAuthAdminServiceServer) Logout(context.Context, *LogoutReques
 }
 func (UnimplementedAuthAdminServiceServer) CreateInviteToken(context.Context, *CreateInviteTokenRequest) (*CreateInviteTokenResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateInviteToken not implemented")
+}
+func (UnimplementedAuthAdminServiceServer) ListVendors(context.Context, *ListVendorsRequest) (*ListVendorsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListVendors not implemented")
 }
 func (UnimplementedAuthAdminServiceServer) mustEmbedUnimplementedAuthAdminServiceServer() {}
 func (UnimplementedAuthAdminServiceServer) testEmbeddedByValue()                          {}
@@ -274,6 +290,24 @@ func _AuthAdminService_CreateInviteToken_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthAdminService_ListVendors_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListVendorsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthAdminServiceServer).ListVendors(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthAdminService_ListVendors_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthAdminServiceServer).ListVendors(ctx, req.(*ListVendorsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthAdminService_ServiceDesc is the grpc.ServiceDesc for AuthAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -304,6 +338,10 @@ var AuthAdminService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "CreateInviteToken",
 			Handler:    _AuthAdminService_CreateInviteToken_Handler,
+		},
+		{
+			MethodName: "ListVendors",
+			Handler:    _AuthAdminService_ListVendors_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

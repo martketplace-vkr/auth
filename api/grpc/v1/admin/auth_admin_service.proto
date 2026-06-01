@@ -11,6 +11,7 @@ service AuthAdminService {
   rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
   rpc Logout(LogoutRequest) returns (LogoutResponse);
   rpc CreateInviteToken(CreateInviteTokenRequest) returns (CreateInviteTokenResponse);
+  rpc ListVendors(ListVendorsRequest) returns (ListVendorsResponse);
 }
 
 message RegisterRequest {
@@ -67,4 +68,15 @@ message CreateInviteTokenRequest {
 
 message CreateInviteTokenResponse {
   string token = 1;
+}
+
+message ListVendorsRequest {}
+
+message Vendor {
+  int64 vendor_id = 1;
+  string email = 2;
+}
+
+message ListVendorsResponse {
+  repeated Vendor vendors = 1;
 }

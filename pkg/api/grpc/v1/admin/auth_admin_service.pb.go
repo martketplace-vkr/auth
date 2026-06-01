@@ -613,6 +613,138 @@ func (x *CreateInviteTokenResponse) GetToken() string {
 	return ""
 }
 
+type ListVendorsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVendorsRequest) Reset() {
+	*x = ListVendorsRequest{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVendorsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVendorsRequest) ProtoMessage() {}
+
+func (x *ListVendorsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVendorsRequest.ProtoReflect.Descriptor instead.
+func (*ListVendorsRequest) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{12}
+}
+
+type Vendor struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	VendorId      int64                  `protobuf:"varint,1,opt,name=vendor_id,json=vendorId,proto3" json:"vendor_id,omitempty"`
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *Vendor) Reset() {
+	*x = Vendor{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[13]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Vendor) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Vendor) ProtoMessage() {}
+
+func (x *Vendor) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[13]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Vendor.ProtoReflect.Descriptor instead.
+func (*Vendor) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{13}
+}
+
+func (x *Vendor) GetVendorId() int64 {
+	if x != nil {
+		return x.VendorId
+	}
+	return 0
+}
+
+func (x *Vendor) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+type ListVendorsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Vendors       []*Vendor              `protobuf:"bytes,1,rep,name=vendors,proto3" json:"vendors,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListVendorsResponse) Reset() {
+	*x = ListVendorsResponse{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[14]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListVendorsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListVendorsResponse) ProtoMessage() {}
+
+func (x *ListVendorsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[14]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListVendorsResponse.ProtoReflect.Descriptor instead.
+func (*ListVendorsResponse) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{14}
+}
+
+func (x *ListVendorsResponse) GetVendors() []*Vendor {
+	if x != nil {
+		return x.Vendors
+	}
+	return nil
+}
+
 var File_v1_admin_auth_admin_service_proto protoreflect.FileDescriptor
 
 const file_v1_admin_auth_admin_service_proto_rawDesc = "" +
@@ -649,14 +781,21 @@ const file_v1_admin_auth_admin_service_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\x03R\x06userId\x12\x17\n" +
 	"\arole_id\x18\x02 \x01(\x03R\x06roleId\"1\n" +
 	"\x19CreateInviteTokenResponse\x12\x14\n" +
-	"\x05token\x18\x01 \x01(\tR\x05token2\xf9\a\n" +
+	"\x05token\x18\x01 \x01(\tR\x05token\"\x14\n" +
+	"\x12ListVendorsRequest\";\n" +
+	"\x06Vendor\x12\x1b\n" +
+	"\tvendor_id\x18\x01 \x01(\x03R\bvendorId\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\"o\n" +
+	"\x13ListVendorsResponse\x12X\n" +
+	"\avendors\x18\x01 \x03(\v2>.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.VendorR\avendors2\xa2\t\n" +
 	"\x10AuthAdminService\x12\x9d\x01\n" +
 	"\bRegister\x12G.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest\x1aH.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse\x12\x94\x01\n" +
 	"\x05Login\x12D.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginRequest\x1aE.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginResponse\x12\xac\x01\n" +
 	"\rValidateToken\x12L.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenRequest\x1aM.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenResponse\x12\xa9\x01\n" +
 	"\fRefreshToken\x12K.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenRequest\x1aL.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenResponse\x12\x97\x01\n" +
 	"\x06Logout\x12E.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutRequest\x1aF.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse\x12\xb8\x01\n" +
-	"\x11CreateInviteToken\x12P.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest\x1aQ.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponseB>Z<github.com/martketplace-vkr/auth/pkg/api/grpc/v1/admin;adminb\x06proto3"
+	"\x11CreateInviteToken\x12P.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest\x1aQ.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse\x12\xa6\x01\n" +
+	"\vListVendors\x12J.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest\x1aK.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponseB>Z<github.com/martketplace-vkr/auth/pkg/api/grpc/v1/admin;adminb\x06proto3"
 
 var (
 	file_v1_admin_auth_admin_service_proto_rawDescOnce sync.Once
@@ -670,7 +809,7 @@ func file_v1_admin_auth_admin_service_proto_rawDescGZIP() []byte {
 	return file_v1_admin_auth_admin_service_proto_rawDescData
 }
 
-var file_v1_admin_auth_admin_service_proto_msgTypes = make([]protoimpl.MessageInfo, 12)
+var file_v1_admin_auth_admin_service_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
 var file_v1_admin_auth_admin_service_proto_goTypes = []any{
 	(*RegisterRequest)(nil),           // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest
 	(*RegisterResponse)(nil),          // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse
@@ -684,25 +823,31 @@ var file_v1_admin_auth_admin_service_proto_goTypes = []any{
 	(*LogoutResponse)(nil),            // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse
 	(*CreateInviteTokenRequest)(nil),  // 10: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest
 	(*CreateInviteTokenResponse)(nil), // 11: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse
+	(*ListVendorsRequest)(nil),        // 12: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest
+	(*Vendor)(nil),                    // 13: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Vendor
+	(*ListVendorsResponse)(nil),       // 14: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse
 }
 var file_v1_admin_auth_admin_service_proto_depIdxs = []int32{
-	0,  // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest
-	2,  // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginRequest
-	4,  // 2: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenRequest
-	6,  // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenRequest
-	8,  // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutRequest
-	10, // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest
-	1,  // 6: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse
-	3,  // 7: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginResponse
-	5,  // 8: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenResponse
-	7,  // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenResponse
-	9,  // 10: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse
-	11, // 11: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse
-	6,  // [6:12] is the sub-list for method output_type
-	0,  // [0:6] is the sub-list for method input_type
-	0,  // [0:0] is the sub-list for extension type_name
-	0,  // [0:0] is the sub-list for extension extendee
-	0,  // [0:0] is the sub-list for field type_name
+	13, // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse.vendors:type_name -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Vendor
+	0,  // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest
+	2,  // 2: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginRequest
+	4,  // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenRequest
+	6,  // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenRequest
+	8,  // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutRequest
+	10, // 6: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest
+	12, // 7: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListVendors:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest
+	1,  // 8: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse
+	3,  // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginResponse
+	5,  // 10: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenResponse
+	7,  // 11: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenResponse
+	9,  // 12: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse
+	11, // 13: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse
+	14, // 14: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListVendors:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse
+	8,  // [8:15] is the sub-list for method output_type
+	1,  // [1:8] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_v1_admin_auth_admin_service_proto_init() }
@@ -716,7 +861,7 @@ func file_v1_admin_auth_admin_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_admin_auth_admin_service_proto_rawDesc), len(file_v1_admin_auth_admin_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   12,
+			NumMessages:   15,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

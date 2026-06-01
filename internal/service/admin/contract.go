@@ -18,6 +18,7 @@ type (
 		HasActiveInviteToken(ctx context.Context, token string) (bool, error)
 		UseInviteToken(ctx context.Context, token string, userID int64) error
 		CreateInviteToken(ctx context.Context, createdBy int64, roleID int64, token string) error
+		ListVendors(ctx context.Context) ([]domain.User, error)
 	}
 	cache interface {
 		SaveRefreshToken(ctx context.Context, args clientdto.SaveRefreshTokenArgs) (err error)

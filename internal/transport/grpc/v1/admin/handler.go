@@ -79,3 +79,22 @@ func (h *Handler) CreateInviteToken(ctx context.Context, req *adminpb.CreateInvi
 
 	return response.ToProto(), nil
 }
+
+func (h *Handler) ListVendors(ctx context.Context, _ *adminpb.ListVendorsRequest) (*adminpb.ListVendorsResponse, error) {
+	vendors, err := h.service.ListVendors(ctx)
+	if err != nil {
+		return nil, err
+	}
+
+	resp := &adminpb.ListVendorsResponse{
+		Vendors: make([]*adminpb.Vendor, 0, len(vendors)),
+	}
+	for _, vendor := range vendors {
+		resp.Vendors = append(resp.Vendors, &adminpb.Vendor{
+			VendorId: vendor.ID,
+			Email:    vendor.Email,
+		})
+	}
+
+	return resp, nil
+}

@@ -194,6 +194,29 @@ func (r *repository) CreateInviteToken(
 	return nil
 }
 
+func (r *repository) ListVendors(ctx context.Context) ([]domain.User, error) {
+	query := `
+		select
+			id,
+			email,
+			password_hash,
+			email_verified,
+			status,
+			created_at,
+			updated_at
+		from vendor.vendor
+		order by email
+	`
+
+	var vendors []domain.User
+	err := r.ctxGetter.DefaultTrOrDB(ctx, r.db).SelectContext(ctx, &vendors, query)
+	if err != nil {
+		return nil, err
+	}
+
+	return vendors, nil
+}
+
 func IsInviteNotFound(err error) bool {
 	return errors.Is(err, sql.ErrNoRows)
 }
