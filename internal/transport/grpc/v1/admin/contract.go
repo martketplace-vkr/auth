@@ -25,5 +25,8 @@ type (
 			req dto.CreateInviteTokenRequest,
 		) (resp dto.CreateInviteTokenResponse, err error)
 		ListVendors(ctx context.Context) ([]domain.User, error)
+		ListClients(ctx context.Context, query string, userStatus string, limit uint32, offset uint32) ([]domain.Client, uint64, error)
+		GetClient(ctx context.Context, clientID int64) (domain.Client, error)
+		UpdateClientStatus(ctx context.Context, clientID int64, userStatus string, reason string, adminID int64) (domain.Client, error)
 	}
 )

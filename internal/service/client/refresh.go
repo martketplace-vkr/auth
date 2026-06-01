@@ -6,6 +6,8 @@ import (
 	"encoding/base64"
 
 	"github.com/martketplace-vkr/auth/internal/service/client/dto"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func (s *service) Refresh(
@@ -25,8 +27,12 @@ func (s *service) Refresh(
 	if err != nil {
 		return resp, err
 	}
+	if user.Status != "active" {
+		_ = s.cache.DeleteUserRefreshTokens(ctx, user.ID)
+		return resp, status.Error(codes.PermissionDenied, "client account is blocked")
+	}
 
-	resp.AccessToken, err = s.generateAccessToken(user.ID, user.Email)
+	resp.AccessToken, err = s.generateAccessToken(user.ID, user.Email, user.TokenVersion)
 	if err != nil {
 		return resp, err
 	}

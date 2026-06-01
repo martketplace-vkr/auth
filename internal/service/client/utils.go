@@ -10,13 +10,14 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-func (s *service) generateAccessToken(userID int64, login string) (string, error) {
+func (s *service) generateAccessToken(userID int64, login string, tokenVersion int64) (string, error) {
 
 	claims := jwt.MapClaims{
-		"user_id": userID,
-		"login":   login,
-		"role":    "client",
-		"exp":     time.Now().Add(time.Minute * 15).Unix(),
+		"user_id":       userID,
+		"login":         login,
+		"role":          "client",
+		"token_version": tokenVersion,
+		"exp":           time.Now().Add(time.Minute * 15).Unix(),
 	}
 
 	token := jwt.NewWithClaims(

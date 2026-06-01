@@ -53,6 +53,10 @@ func (r *repository) SelectUserByEmail(ctx context.Context, email string) (user 
 			password_hash,
 			email_verified,
 			status,
+			token_version,
+			status_reason,
+			status_updated_at,
+			status_updated_by,
 			created_at,
 			updated_at
 		from auth."user"
@@ -82,6 +86,10 @@ func (r *repository) SelectUserByID(ctx context.Context, id int64) (user *domain
 			password_hash,
 			email_verified,
 			status,
+			token_version,
+			status_reason,
+			status_updated_at,
+			status_updated_by,
 			created_at,
 			updated_at
 		from auth."user"
@@ -101,4 +109,14 @@ func (r *repository) SelectUserByID(ctx context.Context, id int64) (user *domain
 	}
 
 	return user, nil
+}
+
+func (r *repository) RecordActivity(ctx context.Context, userID int64) error {
+	_, err := r.ctxGetter.DefaultTrOrDB(ctx, r.db).ExecContext(ctx, `
+		insert into auth.client_activity_daily (client_id, activity_day, first_seen_at, last_seen_at)
+		values ($1, (now() at time zone 'Europe/Moscow')::date, now(), now())
+		on conflict (client_id, activity_day) do update
+		set last_seen_at = excluded.last_seen_at
+	`, userID)
+	return err
 }

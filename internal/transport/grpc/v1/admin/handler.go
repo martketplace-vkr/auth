@@ -2,7 +2,9 @@ package admin
 
 import (
 	"context"
+	"time"
 
+	"github.com/martketplace-vkr/auth/domain"
 	admindto "github.com/martketplace-vkr/auth/internal/service/admin/dto"
 	adminpb "github.com/martketplace-vkr/auth/pkg/api/grpc/v1/admin"
 )
@@ -10,6 +12,67 @@ import (
 type Handler struct {
 	service service
 	adminpb.AuthAdminServiceServer
+}
+
+func (h *Handler) ListClients(ctx context.Context, req *adminpb.ListClientsRequest) (*adminpb.ListClientsResponse, error) {
+	clients, total, err := h.service.ListClients(ctx, req.GetQuery(), req.GetStatus(), req.GetLimit(), req.GetOffset())
+	if err != nil {
+		return nil, err
+	}
+	resp := &adminpb.ListClientsResponse{Total: total, Clients: make([]*adminpb.Client, 0, len(clients))}
+	for _, client := range clients {
+		resp.Clients = append(resp.Clients, clientToProto(client))
+	}
+	return resp, nil
+}
+
+func (h *Handler) GetClient(ctx context.Context, req *adminpb.GetClientRequest) (*adminpb.Client, error) {
+	client, err := h.service.GetClient(ctx, req.GetClientId())
+	if err != nil {
+		return nil, err
+	}
+	return clientToProto(client), nil
+}
+
+func (h *Handler) UpdateClientStatus(ctx context.Context, req *adminpb.UpdateClientStatusRequest) (*adminpb.Client, error) {
+	client, err := h.service.UpdateClientStatus(ctx, req.GetClientId(), req.GetStatus(), req.GetReason(), req.GetAdminId())
+	if err != nil {
+		return nil, err
+	}
+	return clientToProto(client), nil
+}
+
+func clientToProto(client domain.Client) *adminpb.Client {
+	resp := &adminpb.Client{
+		ClientId:      client.ID,
+		Email:         client.Email,
+		EmailVerified: client.EmailVerified,
+		Status:        client.Status,
+		CreatedAt:     formatTime(client.CreatedAt),
+	}
+	if client.StatusReason != nil {
+		resp.StatusReason = *client.StatusReason
+	}
+	if client.UpdatedAt != nil {
+		resp.UpdatedAt = formatTime(*client.UpdatedAt)
+	}
+	if client.LastActivityAt != nil {
+		resp.LastActivityAt = formatTime(*client.LastActivityAt)
+	}
+	for _, event := range client.ModerationEvents {
+		resp.ModerationEvents = append(resp.ModerationEvents, &adminpb.ClientModerationEvent{
+			Id: event.ID, AdminId: event.AdminID, OldStatus: event.OldStatus,
+			NewStatus: event.NewStatus, Reason: event.Reason, CreatedAt: formatTime(event.CreatedAt),
+		})
+	}
+	return resp
+}
+
+func formatTime(value time.Time) string {
+	if value.IsZero() {
+		return ""
+	}
+	return value.UTC().Format(time.RFC3339)
 }
 
 func New(service service) *Handler {

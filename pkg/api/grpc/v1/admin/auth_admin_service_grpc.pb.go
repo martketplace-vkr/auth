@@ -19,13 +19,16 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	AuthAdminService_Register_FullMethodName          = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Register"
-	AuthAdminService_Login_FullMethodName             = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Login"
-	AuthAdminService_ValidateToken_FullMethodName     = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/ValidateToken"
-	AuthAdminService_RefreshToken_FullMethodName      = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/RefreshToken"
-	AuthAdminService_Logout_FullMethodName            = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Logout"
-	AuthAdminService_CreateInviteToken_FullMethodName = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/CreateInviteToken"
-	AuthAdminService_ListVendors_FullMethodName       = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/ListVendors"
+	AuthAdminService_Register_FullMethodName           = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Register"
+	AuthAdminService_Login_FullMethodName              = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Login"
+	AuthAdminService_ValidateToken_FullMethodName      = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/ValidateToken"
+	AuthAdminService_RefreshToken_FullMethodName       = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/RefreshToken"
+	AuthAdminService_Logout_FullMethodName             = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/Logout"
+	AuthAdminService_CreateInviteToken_FullMethodName  = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/CreateInviteToken"
+	AuthAdminService_ListVendors_FullMethodName        = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/ListVendors"
+	AuthAdminService_ListClients_FullMethodName        = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/ListClients"
+	AuthAdminService_GetClient_FullMethodName          = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/GetClient"
+	AuthAdminService_UpdateClientStatus_FullMethodName = "/github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService/UpdateClientStatus"
 )
 
 // AuthAdminServiceClient is the client API for AuthAdminService service.
@@ -39,6 +42,9 @@ type AuthAdminServiceClient interface {
 	Logout(ctx context.Context, in *LogoutRequest, opts ...grpc.CallOption) (*LogoutResponse, error)
 	CreateInviteToken(ctx context.Context, in *CreateInviteTokenRequest, opts ...grpc.CallOption) (*CreateInviteTokenResponse, error)
 	ListVendors(ctx context.Context, in *ListVendorsRequest, opts ...grpc.CallOption) (*ListVendorsResponse, error)
+	ListClients(ctx context.Context, in *ListClientsRequest, opts ...grpc.CallOption) (*ListClientsResponse, error)
+	GetClient(ctx context.Context, in *GetClientRequest, opts ...grpc.CallOption) (*Client, error)
+	UpdateClientStatus(ctx context.Context, in *UpdateClientStatusRequest, opts ...grpc.CallOption) (*Client, error)
 }
 
 type authAdminServiceClient struct {
@@ -119,6 +125,36 @@ func (c *authAdminServiceClient) ListVendors(ctx context.Context, in *ListVendor
 	return out, nil
 }
 
+func (c *authAdminServiceClient) ListClients(ctx context.Context, in *ListClientsRequest, opts ...grpc.CallOption) (*ListClientsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ListClientsResponse)
+	err := c.cc.Invoke(ctx, AuthAdminService_ListClients_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authAdminServiceClient) GetClient(ctx context.Context, in *GetClientRequest, opts ...grpc.CallOption) (*Client, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Client)
+	err := c.cc.Invoke(ctx, AuthAdminService_GetClient_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *authAdminServiceClient) UpdateClientStatus(ctx context.Context, in *UpdateClientStatusRequest, opts ...grpc.CallOption) (*Client, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Client)
+	err := c.cc.Invoke(ctx, AuthAdminService_UpdateClientStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AuthAdminServiceServer is the server API for AuthAdminService service.
 // All implementations must embed UnimplementedAuthAdminServiceServer
 // for forward compatibility.
@@ -130,6 +166,9 @@ type AuthAdminServiceServer interface {
 	Logout(context.Context, *LogoutRequest) (*LogoutResponse, error)
 	CreateInviteToken(context.Context, *CreateInviteTokenRequest) (*CreateInviteTokenResponse, error)
 	ListVendors(context.Context, *ListVendorsRequest) (*ListVendorsResponse, error)
+	ListClients(context.Context, *ListClientsRequest) (*ListClientsResponse, error)
+	GetClient(context.Context, *GetClientRequest) (*Client, error)
+	UpdateClientStatus(context.Context, *UpdateClientStatusRequest) (*Client, error)
 	mustEmbedUnimplementedAuthAdminServiceServer()
 }
 
@@ -160,6 +199,15 @@ func (UnimplementedAuthAdminServiceServer) CreateInviteToken(context.Context, *C
 }
 func (UnimplementedAuthAdminServiceServer) ListVendors(context.Context, *ListVendorsRequest) (*ListVendorsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ListVendors not implemented")
+}
+func (UnimplementedAuthAdminServiceServer) ListClients(context.Context, *ListClientsRequest) (*ListClientsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListClients not implemented")
+}
+func (UnimplementedAuthAdminServiceServer) GetClient(context.Context, *GetClientRequest) (*Client, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClient not implemented")
+}
+func (UnimplementedAuthAdminServiceServer) UpdateClientStatus(context.Context, *UpdateClientStatusRequest) (*Client, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateClientStatus not implemented")
 }
 func (UnimplementedAuthAdminServiceServer) mustEmbedUnimplementedAuthAdminServiceServer() {}
 func (UnimplementedAuthAdminServiceServer) testEmbeddedByValue()                          {}
@@ -308,6 +356,60 @@ func _AuthAdminService_ListVendors_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AuthAdminService_ListClients_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListClientsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthAdminServiceServer).ListClients(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthAdminService_ListClients_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthAdminServiceServer).ListClients(ctx, req.(*ListClientsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthAdminService_GetClient_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetClientRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthAdminServiceServer).GetClient(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthAdminService_GetClient_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthAdminServiceServer).GetClient(ctx, req.(*GetClientRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AuthAdminService_UpdateClientStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateClientStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthAdminServiceServer).UpdateClientStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AuthAdminService_UpdateClientStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthAdminServiceServer).UpdateClientStatus(ctx, req.(*UpdateClientStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AuthAdminService_ServiceDesc is the grpc.ServiceDesc for AuthAdminService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -342,6 +444,18 @@ var AuthAdminService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "ListVendors",
 			Handler:    _AuthAdminService_ListVendors_Handler,
+		},
+		{
+			MethodName: "ListClients",
+			Handler:    _AuthAdminService_ListClients_Handler,
+		},
+		{
+			MethodName: "GetClient",
+			Handler:    _AuthAdminService_GetClient_Handler,
+		},
+		{
+			MethodName: "UpdateClientStatus",
+			Handler:    _AuthAdminService_UpdateClientStatus_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -4,6 +4,8 @@ import (
 	"context"
 
 	"github.com/martketplace-vkr/auth/internal/service/client/dto"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
 func (s *service) SignIn(ctx context.Context, req dto.SignInRequest) (resp dto.SignInResponse, err error) {
@@ -16,8 +18,11 @@ func (s *service) SignIn(ctx context.Context, req dto.SignInRequest) (resp dto.S
 	if err != nil {
 		return resp, err
 	}
+	if user.Status != "active" {
+		return resp, status.Error(codes.PermissionDenied, "client account is blocked")
+	}
 
-	resp.AccessToken, err = s.generateAccessToken(user.ID, req.Email)
+	resp.AccessToken, err = s.generateAccessToken(user.ID, req.Email, user.TokenVersion)
 	if err != nil {
 		return resp, err
 	}

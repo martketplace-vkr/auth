@@ -745,6 +745,430 @@ func (x *ListVendorsResponse) GetVendors() []*Vendor {
 	return nil
 }
 
+type ListClientsRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Query         string                 `protobuf:"bytes,1,opt,name=query,proto3" json:"query,omitempty"`
+	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	Limit         uint32                 `protobuf:"varint,3,opt,name=limit,proto3" json:"limit,omitempty"`
+	Offset        uint32                 `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListClientsRequest) Reset() {
+	*x = ListClientsRequest{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[15]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListClientsRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListClientsRequest) ProtoMessage() {}
+
+func (x *ListClientsRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[15]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListClientsRequest.ProtoReflect.Descriptor instead.
+func (*ListClientsRequest) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{15}
+}
+
+func (x *ListClientsRequest) GetQuery() string {
+	if x != nil {
+		return x.Query
+	}
+	return ""
+}
+
+func (x *ListClientsRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *ListClientsRequest) GetLimit() uint32 {
+	if x != nil {
+		return x.Limit
+	}
+	return 0
+}
+
+func (x *ListClientsRequest) GetOffset() uint32 {
+	if x != nil {
+		return x.Offset
+	}
+	return 0
+}
+
+type GetClientRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClientId      int64                  `protobuf:"varint,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetClientRequest) Reset() {
+	*x = GetClientRequest{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[16]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetClientRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetClientRequest) ProtoMessage() {}
+
+func (x *GetClientRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[16]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetClientRequest.ProtoReflect.Descriptor instead.
+func (*GetClientRequest) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{16}
+}
+
+func (x *GetClientRequest) GetClientId() int64 {
+	if x != nil {
+		return x.ClientId
+	}
+	return 0
+}
+
+type UpdateClientStatusRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ClientId      int64                  `protobuf:"varint,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	Status        string                 `protobuf:"bytes,2,opt,name=status,proto3" json:"status,omitempty"`
+	Reason        string                 `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	AdminId       int64                  `protobuf:"varint,4,opt,name=admin_id,json=adminId,proto3" json:"admin_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateClientStatusRequest) Reset() {
+	*x = UpdateClientStatusRequest{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[17]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateClientStatusRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateClientStatusRequest) ProtoMessage() {}
+
+func (x *UpdateClientStatusRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[17]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateClientStatusRequest.ProtoReflect.Descriptor instead.
+func (*UpdateClientStatusRequest) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{17}
+}
+
+func (x *UpdateClientStatusRequest) GetClientId() int64 {
+	if x != nil {
+		return x.ClientId
+	}
+	return 0
+}
+
+func (x *UpdateClientStatusRequest) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *UpdateClientStatusRequest) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *UpdateClientStatusRequest) GetAdminId() int64 {
+	if x != nil {
+		return x.AdminId
+	}
+	return 0
+}
+
+type ClientModerationEvent struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	AdminId       int64                  `protobuf:"varint,2,opt,name=admin_id,json=adminId,proto3" json:"admin_id,omitempty"`
+	OldStatus     string                 `protobuf:"bytes,3,opt,name=old_status,json=oldStatus,proto3" json:"old_status,omitempty"`
+	NewStatus     string                 `protobuf:"bytes,4,opt,name=new_status,json=newStatus,proto3" json:"new_status,omitempty"`
+	Reason        string                 `protobuf:"bytes,5,opt,name=reason,proto3" json:"reason,omitempty"`
+	CreatedAt     string                 `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ClientModerationEvent) Reset() {
+	*x = ClientModerationEvent{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[18]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ClientModerationEvent) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ClientModerationEvent) ProtoMessage() {}
+
+func (x *ClientModerationEvent) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[18]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ClientModerationEvent.ProtoReflect.Descriptor instead.
+func (*ClientModerationEvent) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{18}
+}
+
+func (x *ClientModerationEvent) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *ClientModerationEvent) GetAdminId() int64 {
+	if x != nil {
+		return x.AdminId
+	}
+	return 0
+}
+
+func (x *ClientModerationEvent) GetOldStatus() string {
+	if x != nil {
+		return x.OldStatus
+	}
+	return ""
+}
+
+func (x *ClientModerationEvent) GetNewStatus() string {
+	if x != nil {
+		return x.NewStatus
+	}
+	return ""
+}
+
+func (x *ClientModerationEvent) GetReason() string {
+	if x != nil {
+		return x.Reason
+	}
+	return ""
+}
+
+func (x *ClientModerationEvent) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+type Client struct {
+	state            protoimpl.MessageState   `protogen:"open.v1"`
+	ClientId         int64                    `protobuf:"varint,1,opt,name=client_id,json=clientId,proto3" json:"client_id,omitempty"`
+	Email            string                   `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`
+	EmailVerified    bool                     `protobuf:"varint,3,opt,name=email_verified,json=emailVerified,proto3" json:"email_verified,omitempty"`
+	Status           string                   `protobuf:"bytes,4,opt,name=status,proto3" json:"status,omitempty"`
+	StatusReason     string                   `protobuf:"bytes,5,opt,name=status_reason,json=statusReason,proto3" json:"status_reason,omitempty"`
+	CreatedAt        string                   `protobuf:"bytes,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`
+	UpdatedAt        string                   `protobuf:"bytes,7,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`
+	LastActivityAt   string                   `protobuf:"bytes,8,opt,name=last_activity_at,json=lastActivityAt,proto3" json:"last_activity_at,omitempty"`
+	ModerationEvents []*ClientModerationEvent `protobuf:"bytes,9,rep,name=moderation_events,json=moderationEvents,proto3" json:"moderation_events,omitempty"`
+	unknownFields    protoimpl.UnknownFields
+	sizeCache        protoimpl.SizeCache
+}
+
+func (x *Client) Reset() {
+	*x = Client{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[19]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *Client) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*Client) ProtoMessage() {}
+
+func (x *Client) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[19]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use Client.ProtoReflect.Descriptor instead.
+func (*Client) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{19}
+}
+
+func (x *Client) GetClientId() int64 {
+	if x != nil {
+		return x.ClientId
+	}
+	return 0
+}
+
+func (x *Client) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
+}
+
+func (x *Client) GetEmailVerified() bool {
+	if x != nil {
+		return x.EmailVerified
+	}
+	return false
+}
+
+func (x *Client) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+func (x *Client) GetStatusReason() string {
+	if x != nil {
+		return x.StatusReason
+	}
+	return ""
+}
+
+func (x *Client) GetCreatedAt() string {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return ""
+}
+
+func (x *Client) GetUpdatedAt() string {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return ""
+}
+
+func (x *Client) GetLastActivityAt() string {
+	if x != nil {
+		return x.LastActivityAt
+	}
+	return ""
+}
+
+func (x *Client) GetModerationEvents() []*ClientModerationEvent {
+	if x != nil {
+		return x.ModerationEvents
+	}
+	return nil
+}
+
+type ListClientsResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Clients       []*Client              `protobuf:"bytes,1,rep,name=clients,proto3" json:"clients,omitempty"`
+	Total         uint64                 `protobuf:"varint,2,opt,name=total,proto3" json:"total,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *ListClientsResponse) Reset() {
+	*x = ListClientsResponse{}
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[20]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ListClientsResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ListClientsResponse) ProtoMessage() {}
+
+func (x *ListClientsResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_v1_admin_auth_admin_service_proto_msgTypes[20]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use ListClientsResponse.ProtoReflect.Descriptor instead.
+func (*ListClientsResponse) Descriptor() ([]byte, []int) {
+	return file_v1_admin_auth_admin_service_proto_rawDescGZIP(), []int{20}
+}
+
+func (x *ListClientsResponse) GetClients() []*Client {
+	if x != nil {
+		return x.Clients
+	}
+	return nil
+}
+
+func (x *ListClientsResponse) GetTotal() uint64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
 var File_v1_admin_auth_admin_service_proto protoreflect.FileDescriptor
 
 const file_v1_admin_auth_admin_service_proto_rawDesc = "" +
@@ -787,7 +1211,44 @@ const file_v1_admin_auth_admin_service_proto_rawDesc = "" +
 	"\tvendor_id\x18\x01 \x01(\x03R\bvendorId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\"o\n" +
 	"\x13ListVendorsResponse\x12X\n" +
-	"\avendors\x18\x01 \x03(\v2>.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.VendorR\avendors2\xa2\t\n" +
+	"\avendors\x18\x01 \x03(\v2>.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.VendorR\avendors\"p\n" +
+	"\x12ListClientsRequest\x12\x14\n" +
+	"\x05query\x18\x01 \x01(\tR\x05query\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\x12\x14\n" +
+	"\x05limit\x18\x03 \x01(\rR\x05limit\x12\x16\n" +
+	"\x06offset\x18\x04 \x01(\rR\x06offset\"/\n" +
+	"\x10GetClientRequest\x12\x1b\n" +
+	"\tclient_id\x18\x01 \x01(\x03R\bclientId\"\x83\x01\n" +
+	"\x19UpdateClientStatusRequest\x12\x1b\n" +
+	"\tclient_id\x18\x01 \x01(\x03R\bclientId\x12\x16\n" +
+	"\x06status\x18\x02 \x01(\tR\x06status\x12\x16\n" +
+	"\x06reason\x18\x03 \x01(\tR\x06reason\x12\x19\n" +
+	"\badmin_id\x18\x04 \x01(\x03R\aadminId\"\xb7\x01\n" +
+	"\x15ClientModerationEvent\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
+	"\badmin_id\x18\x02 \x01(\x03R\aadminId\x12\x1d\n" +
+	"\n" +
+	"old_status\x18\x03 \x01(\tR\toldStatus\x12\x1d\n" +
+	"\n" +
+	"new_status\x18\x04 \x01(\tR\tnewStatus\x12\x16\n" +
+	"\x06reason\x18\x05 \x01(\tR\x06reason\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x06 \x01(\tR\tcreatedAt\"\x83\x03\n" +
+	"\x06Client\x12\x1b\n" +
+	"\tclient_id\x18\x01 \x01(\x03R\bclientId\x12\x14\n" +
+	"\x05email\x18\x02 \x01(\tR\x05email\x12%\n" +
+	"\x0eemail_verified\x18\x03 \x01(\bR\remailVerified\x12\x16\n" +
+	"\x06status\x18\x04 \x01(\tR\x06status\x12#\n" +
+	"\rstatus_reason\x18\x05 \x01(\tR\fstatusReason\x12\x1d\n" +
+	"\n" +
+	"created_at\x18\x06 \x01(\tR\tcreatedAt\x12\x1d\n" +
+	"\n" +
+	"updated_at\x18\a \x01(\tR\tupdatedAt\x12(\n" +
+	"\x10last_activity_at\x18\b \x01(\tR\x0elastActivityAt\x12z\n" +
+	"\x11moderation_events\x18\t \x03(\v2M.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ClientModerationEventR\x10moderationEvents\"\x85\x01\n" +
+	"\x13ListClientsResponse\x12X\n" +
+	"\aclients\x18\x01 \x03(\v2>.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ClientR\aclients\x12\x14\n" +
+	"\x05total\x18\x02 \x01(\x04R\x05total2\x8d\r\n" +
 	"\x10AuthAdminService\x12\x9d\x01\n" +
 	"\bRegister\x12G.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest\x1aH.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse\x12\x94\x01\n" +
 	"\x05Login\x12D.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginRequest\x1aE.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginResponse\x12\xac\x01\n" +
@@ -795,7 +1256,10 @@ const file_v1_admin_auth_admin_service_proto_rawDesc = "" +
 	"\fRefreshToken\x12K.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenRequest\x1aL.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenResponse\x12\x97\x01\n" +
 	"\x06Logout\x12E.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutRequest\x1aF.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse\x12\xb8\x01\n" +
 	"\x11CreateInviteToken\x12P.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest\x1aQ.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse\x12\xa6\x01\n" +
-	"\vListVendors\x12J.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest\x1aK.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponseB>Z<github.com/martketplace-vkr/auth/pkg/api/grpc/v1/admin;adminb\x06proto3"
+	"\vListVendors\x12J.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest\x1aK.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse\x12\xa6\x01\n" +
+	"\vListClients\x12J.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsRequest\x1aK.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsResponse\x12\x95\x01\n" +
+	"\tGetClient\x12H.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.GetClientRequest\x1a>.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Client\x12\xa7\x01\n" +
+	"\x12UpdateClientStatus\x12Q.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.UpdateClientStatusRequest\x1a>.github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ClientB>Z<github.com/martketplace-vkr/auth/pkg/api/grpc/v1/admin;adminb\x06proto3"
 
 var (
 	file_v1_admin_auth_admin_service_proto_rawDescOnce sync.Once
@@ -809,7 +1273,7 @@ func file_v1_admin_auth_admin_service_proto_rawDescGZIP() []byte {
 	return file_v1_admin_auth_admin_service_proto_rawDescData
 }
 
-var file_v1_admin_auth_admin_service_proto_msgTypes = make([]protoimpl.MessageInfo, 15)
+var file_v1_admin_auth_admin_service_proto_msgTypes = make([]protoimpl.MessageInfo, 21)
 var file_v1_admin_auth_admin_service_proto_goTypes = []any{
 	(*RegisterRequest)(nil),           // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest
 	(*RegisterResponse)(nil),          // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse
@@ -826,28 +1290,42 @@ var file_v1_admin_auth_admin_service_proto_goTypes = []any{
 	(*ListVendorsRequest)(nil),        // 12: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest
 	(*Vendor)(nil),                    // 13: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Vendor
 	(*ListVendorsResponse)(nil),       // 14: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse
+	(*ListClientsRequest)(nil),        // 15: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsRequest
+	(*GetClientRequest)(nil),          // 16: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.GetClientRequest
+	(*UpdateClientStatusRequest)(nil), // 17: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.UpdateClientStatusRequest
+	(*ClientModerationEvent)(nil),     // 18: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ClientModerationEvent
+	(*Client)(nil),                    // 19: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Client
+	(*ListClientsResponse)(nil),       // 20: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsResponse
 }
 var file_v1_admin_auth_admin_service_proto_depIdxs = []int32{
 	13, // 0: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse.vendors:type_name -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Vendor
-	0,  // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest
-	2,  // 2: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginRequest
-	4,  // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenRequest
-	6,  // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenRequest
-	8,  // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutRequest
-	10, // 6: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest
-	12, // 7: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListVendors:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest
-	1,  // 8: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse
-	3,  // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginResponse
-	5,  // 10: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenResponse
-	7,  // 11: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenResponse
-	9,  // 12: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse
-	11, // 13: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse
-	14, // 14: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListVendors:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse
-	8,  // [8:15] is the sub-list for method output_type
-	1,  // [1:8] is the sub-list for method input_type
-	1,  // [1:1] is the sub-list for extension type_name
-	1,  // [1:1] is the sub-list for extension extendee
-	0,  // [0:1] is the sub-list for field type_name
+	18, // 1: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Client.moderation_events:type_name -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ClientModerationEvent
+	19, // 2: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsResponse.clients:type_name -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Client
+	0,  // 3: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterRequest
+	2,  // 4: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginRequest
+	4,  // 5: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenRequest
+	6,  // 6: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenRequest
+	8,  // 7: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutRequest
+	10, // 8: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenRequest
+	12, // 9: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListVendors:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsRequest
+	15, // 10: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListClients:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsRequest
+	16, // 11: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.GetClient:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.GetClientRequest
+	17, // 12: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.UpdateClientStatus:input_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.UpdateClientStatusRequest
+	1,  // 13: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Register:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RegisterResponse
+	3,  // 14: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Login:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LoginResponse
+	5,  // 15: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ValidateToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ValidateTokenResponse
+	7,  // 16: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.RefreshToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.RefreshTokenResponse
+	9,  // 17: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.Logout:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.LogoutResponse
+	11, // 18: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.CreateInviteToken:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.CreateInviteTokenResponse
+	14, // 19: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListVendors:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListVendorsResponse
+	20, // 20: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.ListClients:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.ListClientsResponse
+	19, // 21: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.GetClient:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Client
+	19, // 22: github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.AuthAdminService.UpdateClientStatus:output_type -> github.com.martketplace.vkr.auth.pkg.api.grpc.v1.admin.Client
+	13, // [13:23] is the sub-list for method output_type
+	3,  // [3:13] is the sub-list for method input_type
+	3,  // [3:3] is the sub-list for extension type_name
+	3,  // [3:3] is the sub-list for extension extendee
+	0,  // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_v1_admin_auth_admin_service_proto_init() }
@@ -861,7 +1339,7 @@ func file_v1_admin_auth_admin_service_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_v1_admin_auth_admin_service_proto_rawDesc), len(file_v1_admin_auth_admin_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   15,
+			NumMessages:   21,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

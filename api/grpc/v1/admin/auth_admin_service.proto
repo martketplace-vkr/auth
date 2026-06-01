@@ -12,6 +12,9 @@ service AuthAdminService {
   rpc Logout(LogoutRequest) returns (LogoutResponse);
   rpc CreateInviteToken(CreateInviteTokenRequest) returns (CreateInviteTokenResponse);
   rpc ListVendors(ListVendorsRequest) returns (ListVendorsResponse);
+  rpc ListClients(ListClientsRequest) returns (ListClientsResponse);
+  rpc GetClient(GetClientRequest) returns (Client);
+  rpc UpdateClientStatus(UpdateClientStatusRequest) returns (Client);
 }
 
 message RegisterRequest {
@@ -79,4 +82,48 @@ message Vendor {
 
 message ListVendorsResponse {
   repeated Vendor vendors = 1;
+}
+
+message ListClientsRequest {
+  string query = 1;
+  string status = 2;
+  uint32 limit = 3;
+  uint32 offset = 4;
+}
+
+message GetClientRequest {
+  int64 client_id = 1;
+}
+
+message UpdateClientStatusRequest {
+  int64 client_id = 1;
+  string status = 2;
+  string reason = 3;
+  int64 admin_id = 4;
+}
+
+message ClientModerationEvent {
+  int64 id = 1;
+  int64 admin_id = 2;
+  string old_status = 3;
+  string new_status = 4;
+  string reason = 5;
+  string created_at = 6;
+}
+
+message Client {
+  int64 client_id = 1;
+  string email = 2;
+  bool email_verified = 3;
+  string status = 4;
+  string status_reason = 5;
+  string created_at = 6;
+  string updated_at = 7;
+  string last_activity_at = 8;
+  repeated ClientModerationEvent moderation_events = 9;
+}
+
+message ListClientsResponse {
+  repeated Client clients = 1;
+  uint64 total = 2;
 }
